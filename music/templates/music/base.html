@@ -14,13 +14,21 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
             <a class="nav-link active" href="{% url 'music:index' %}">Home <span class="sr-only">(current)</span></a>
             <a class="nav-link" href="{% url 'music:hornists' %}">Hornists</a>
-            <a class="nav-link" href="{% url 'music:contribute' 'new' %}">Contribute</a>
-            <a class="nav-link" href="{% url 'music:contributespot' %}">Contribute from Spotify</a>
-          </div>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Contribute
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="{% url 'music:contribute' 'new' %}">Contribute Manually</a>
+                <a class="dropdown-item" href="{% url 'music:contributespot' %}">Contribute from Spotify</a>
+              </div>
+            </li>
+          </ul>
         </div>
     </nav>
     <!--Error-->
