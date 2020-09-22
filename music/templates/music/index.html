@@ -1,0 +1,14 @@
+{% extends "music/base.html" %}
+{% block content %}
+<h1>Conical - Horn Music Repository</h1>
+{% for playlist in playlists %}
+    <h2>{{ playlist.title }}</h2>
+    <ul>
+        {% for song in playlist.song_set.all %}
+            <li>{{ song.title }} <br> 
+                <iframe src="https://open.spotify.com/embed/track/{{ song.get_id }}" width="500" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+
+{% endblock %}

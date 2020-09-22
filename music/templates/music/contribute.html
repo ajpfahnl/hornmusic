@@ -1,0 +1,30 @@
+{% extends "music/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Contribute</h1>
+
+<form method="post">
+    {% csrf_token %}
+
+    {% if type == 'new' %}
+    {{ form|crispy }}
+    <input type="submit" value="Submit">
+    {% endif %}
+
+    {% if type == "from_spotify" %}
+
+    <p>Potential artists involved:</p>
+    <ul>
+        {% for a in artists %}
+            <li>{{ a.name }}</li>
+        {% endfor %}
+    </ul>
+
+    {{ form|crispy }}
+    <input type="submit" value="Submit">
+
+    {% endif %}
+</form>
+
+{% endblock %}
