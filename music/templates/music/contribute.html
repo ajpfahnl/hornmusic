@@ -4,27 +4,22 @@
 {% block content %}
 <h1>Contribute</h1>
 
-<form method="post">
+<form method="post" autocomplete="off">
     {% csrf_token %}
 
-    {% if type == 'new' %}
-    {{ form|crispy }}
-    <input type="submit" value="Submit">
-    {% endif %}
-
     {% if type == "from_spotify" %}
-
     <p>Potential artists involved:</p>
     <ul>
         {% for a in artists %}
             <li>{{ a.name }}</li>
         {% endfor %}
     </ul>
+    <p>Use the dropdowns to select the appropriate artist, or manually type an answer in the field.</p>
+    {% endif %}
 
     {{ form|crispy }}
     <input type="submit" value="Submit">
-
-    {% endif %}
+    
 </form>
 
 {% endblock %}

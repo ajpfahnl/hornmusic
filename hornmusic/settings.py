@@ -156,3 +156,7 @@ django_heroku.settings(locals())
 # ssl mode issue workaround
 options = DATABASES['default'].get('OPTIONS', {})
 options.pop('sslmode', None)
+
+
+
+LOGIN_REDIRECT_URL = '/'
