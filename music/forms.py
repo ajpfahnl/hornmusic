@@ -19,7 +19,7 @@ class SongForm(ModelForm):
             self.fields['artist'].widget = ListTextWidget(data_list=_data_list, name='data_list')
             self.fields['composer'].widget = ListTextWidget(data_list=_data_list, name='data_list')
             self.fields['conductor'].widget = ListTextWidget(data_list=_data_list, name='data_list')
-            self.fields['orchestra'].widget = ListTextWidget(data_list=_data_list, name='data_list')
+            self.fields['ensemble'].widget = ListTextWidget(data_list=_data_list, name='data_list')
             self.fields['arranger'].widget = ListTextWidget(data_list=_data_list, name='data_list')
 
 class SpotifyForm(Form):
