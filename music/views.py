@@ -30,7 +30,7 @@ def contribute(request, spotify_uri):
     else:
         track_info = extract_track_details(spotify_uri)
         artists = [item["name"] for item in track_info["artists"]]
-        form = SongForm(data_list=artists, initial={"spotify_uri": id, "title": track_info["name"], "added_by": username})
+        form = SongForm(data_list=artists, initial={"spotify_uri": spotify_uri, "title": track_info["name"], "added_by": username})
         context = {'type': "from_spotify", 'form': form, 'artists': track_info['artists'], 'name': track_info['name']}
         return render(request, "music/contribute.html", context)
 
