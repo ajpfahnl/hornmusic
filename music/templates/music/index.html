@@ -2,13 +2,32 @@
 {% block content %}
 <h1>HornMusic - The Hornist's Repository</h1>
 {% for playlist in playlists %}
-    <h2>{{ playlist.title }}</h2>
-    <ul>
+<h4>{{ playlist.title }}</h4>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Spotify</th>
+        <th scope="col">Soloist</th>
+        <th scope="col">Composer</th>
+        <th scope="col">Conductor</th>
+        <th scope="col">Orchestra</th>
+      </tr>
+    </thead>
+    
+    <tbody>
         {% for song in playlist.song_set.all %}
-            <li>{{ song.title }} <br> 
-                <iframe src="https://open.spotify.com/embed/track/{{ song.get_id }}" width="500" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></li>
+        <tr>
+            <th scope="row">{{ song.title }}</th>
+            <td><iframe src="https://open.spotify.com/embed/track/{{ song.get_id }}" width="250" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></li></td>
+            <td>{{ song.artist }}</td>
+            <td>{{ song.composer }}</td>
+            <td>{{ song.conductor }}</td>
+            <td>{{ song.orchestra }}</td>
+        </tr>
         {% endfor %}
-    </ul>
+    </tbody>
+</table>
 {% endfor %}
 
 {% endblock %}
