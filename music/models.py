@@ -13,7 +13,7 @@ class Song(models.Model):
     composer = models.CharField(max_length=50, blank=True)
     arranger = models.CharField(max_length=50, blank=True)
     conductor = models.CharField(max_length=50, blank=True)
-    orchestra = models.CharField(max_length=50, blank=True)
+    ensemble = models.CharField(max_length=50, blank=True)
     spotify_uri = models.CharField("Spotify URI", max_length=200, blank=True)
     youtube_url = models.CharField("YouTube URL", max_length=200, blank=True)
     other_url = models.CharField("Other URL", max_length=200, blank=True)
