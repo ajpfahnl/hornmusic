@@ -12,6 +12,9 @@
         <th scope="col">Composer</th>
         <th scope="col">Conductor</th>
         <th scope="col">Ensemble</th>
+        {% if user.is_authenticated %}
+        <th scope="col"></th>
+        {% endif %}
       </tr>
     </thead>
     
@@ -24,6 +27,9 @@
             <td>{{ song.composer }}</td>
             <td>{{ song.conductor }}</td>
             <td>{{ song.ensemble }}</td>
+            {% if user.is_authenticated %}
+            <td><a href="{% url 'music:edit_song' song.id %}">Edit</a> </td>
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>

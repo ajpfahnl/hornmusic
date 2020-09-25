@@ -19,6 +19,7 @@ class Song(models.Model):
     other_url = models.CharField("Other URL", max_length=200, blank=True)
     playlists = models.ManyToManyField(Playlist)
     added_by = models.CharField(max_length=150, default="admin")
+    last_edit_by = models.CharField(max_length=150, blank="admin")
     notes = models.CharField(max_length=300, blank=True)
     def __str__(self):
         return self.title

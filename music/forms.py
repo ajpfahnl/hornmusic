@@ -6,7 +6,7 @@ from .fields import ListTextWidget
 class SongForm(ModelForm):
     class Meta:
         model = Song
-        exclude = ['added_by']
+        exclude = ['added_by', 'last_edit_by']
 
     def __init__(self, *args, **kwargs):
         _data_list = kwargs.pop('data_list', None)
