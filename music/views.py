@@ -15,6 +15,7 @@ def index(request):
 
 @login_required
 def contribute(request, id):
+    username = request.user.get_username()
     if request.method == "POST":
         form = SongForm(request.POST)
         if form.is_valid():
@@ -22,14 +23,14 @@ def contribute(request, id):
             return HttpResponseRedirect(reverse('music:index'))
     
     elif id == "new":
-        form = SongForm()
+        form = SongForm({"added_by": username})
         context = {'type': "new", 'form': form}
         return render(request, "music/contribute.html", context)
     
     else:
         track_info = extract_track_details(id)
         artists = [item["name"] for item in track_info["artists"]]
-        form = SongForm(data_list=artists, initial={"spotify_uri": id, "title": track_info["name"], "added_by": User.username})
+        form = SongForm(data_list=artists, initial={"spotify_uri": id, "title": track_info["name"], "added_by": username})
         context = {'type': "from_spotify", 'form': form, 'artists': track_info['artists'], 'name': track_info['name']}
         return render(request, "music/contribute.html", context)
 
