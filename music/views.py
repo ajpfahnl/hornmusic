@@ -55,10 +55,14 @@ def contribute_from_spotify(request):
         if form.is_valid():
             uri = form.cleaned_data["spotify_uri"]
             print(uri)
-            return HttpResponseRedirect(reverse('music:contribute', args=(uri,)))
+            if not Song.objects.filter(spotify_uri=uri):
+                return HttpResponseRedirect(reverse('music:contribute', args=(uri,)))
+            else:
+                context = {"form": form, "uri_used": True}
     else:
         form = SpotifyForm()
         context = {"form": form}
+
     return render(request, "music/contributespot.html", context)
 
 def hornists(request):
