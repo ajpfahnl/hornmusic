@@ -6,4 +6,5 @@ def extract_track_details(uri):
     results = sp.track(uri)
     artists = results['artists']
     name = results['name']
-    return {"artists": artists, "name": name}
+    album_name = results['album']['name']
+    return {"artists": artists, "name": name, "album_name": album_name}
