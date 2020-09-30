@@ -3,6 +3,7 @@
 <h1>HornMusic - The Hornist's Repository</h1>
 {% for playlist in playlists %}
 <h4>{{ playlist.title }}</h4>
+<input class="form-control" id="searchInput{{ playlist.id }}" type="text" placeholder="Search..">
 <table class="table">
     <thead>
       <tr>
@@ -18,7 +19,7 @@
       </tr>
     </thead>
     
-    <tbody>
+    <tbody id="tableBody{{ playlist.id }}">
         {% for song in playlist.song_set.all %}
         <tr>
             <th scope="row">{{ song.title }}</th>
@@ -36,4 +37,21 @@
 </table>
 {% endfor %}
 
+{% endblock %}
+
+
+
+{% block js %}
+{% for playlist in playlists %}
+<script>
+  $(document).ready(function(){
+    $("#searchInput{{ playlist.id }}").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#tableBody{{ playlist.id }} tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>
+{% endfor %}
 {% endblock %}
