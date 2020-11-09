@@ -27,4 +27,5 @@ class Song(models.Model):
     def get_id(self):
         return self.spotify_uri.split(':')[-1]
 
-    # title_text, artist_text, composer_text, conductor_text, orchestra_text, uri_spotify_text
+class Recordings(models.Model):
+    pass
