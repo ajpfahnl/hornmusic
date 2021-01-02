@@ -24,10 +24,10 @@
         <tr>
             <th scope="row">{{ song.title }}</th>
             <td><iframe src="https://open.spotify.com/embed/track/{{ song.get_id }}" width="250" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe></li></td>
-            <td>{{ song.artist }}</td>
-            <td>{{ song.composer }}</td>
-            <td>{{ song.conductor }}</td>
-            <td>{{ song.ensemble }}</td>
+            <td>{% for artist in song.artist.all %}{{ artist }}<br/>{% endfor %}</td>
+            <td>{% for composer in song.composer.all %}{{ composer }}<br/>{% endfor %}</td>
+            <td>{% for conductor in song.conductor.all %}{{ conductor }}<br/>{% endfor %}</td>
+            <td>{% for ensemble in song.ensemble.all %}{{ ensemble }}<br/>{% endfor %}</td>
             {% if user.is_authenticated %}
             <td><a href="{% url 'music:edit_song' song.id %}">Edit</a> </td>
             {% endif %}

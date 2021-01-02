@@ -1,0 +1,15 @@
+{% extends "music/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Contribute Song</h1>
+
+<form method="post" autocomplete="off">
+    {% csrf_token %}
+
+    {{ form|crispy }}
+    <input type="submit" value="Submit">
+    
+</form>
+
+{% endblock %}
