@@ -27,6 +27,7 @@ class SongForm(ModelForm):
         # same list.
         if _data_list == None:
             _data_list = []
+        self.fields['soloist_text'].widget = ListTextWidget(data_list=_data_list, name='data_list')
         self.fields['artist_text'].widget = ListTextWidget(data_list=_data_list, name='data_list')
         self.fields['composer_text'].widget = ListTextWidget(data_list=_data_list, name='data_list')
         self.fields['conductor_text'].widget = ListTextWidget(data_list=_data_list, name='data_list')
@@ -37,7 +38,7 @@ class SongFormEdit(ModelForm):
     class Meta:
         model = Song
         fields = ['title', 
-                  'album', 'artist', 'composer', 'conductor', 'ensemble', 'arranger',
+                  'album', 'artists', 'composers', 'conductors', 'ensembles', 'arrangers',
                   'spotify_uri', 'youtube_url', 'other_url', 'playlists', 'notes']
 
 

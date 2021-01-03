@@ -82,10 +82,10 @@ def contribute_spotify_song(request, spotify_uri):
                     entity_objects = Entity.objects.filter(name__exact=entity)
                     role_str = get_role_str(role)
                     if len(entity_objects) == 0:
-                        new_song_role_create = getattr(getattr(new_song, role_str), 'create')
+                        new_song_role_create = getattr(getattr(new_song, role_str+'s'), 'create')
                         new_song_role_create(name=entity)
                     else:
-                        new_song_role_add = getattr(getattr(new_song, role_str), 'add')
+                        new_song_role_add = getattr(getattr(new_song, role_str+'s'), 'add')
                         new_song_role_add(entity_objects[0])
             new_song.save()
             return HttpResponseRedirect(reverse('music:index'))
