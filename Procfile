@@ -1,1 +1,1 @@
-web: gunicorn somus.wsgi 
+web: gunicorn metronomic.wsgi 
