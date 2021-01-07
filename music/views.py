@@ -25,9 +25,8 @@ def contribute_entity(request):
 
 @login_required
 def contribute_song(request, spotify_uri=None):
-    username = request.user.get_username()
     if request.method == "POST":
-        form = SongForm(request.POST)
+        form = SongFormEdit(request.POST)
         if form.is_valid():
             new_song = form.save()
             return HttpResponseRedirect(reverse('music:index'))
@@ -35,7 +34,7 @@ def contribute_song(request, spotify_uri=None):
             context = {'form': form}
     
     else:
-        form = SongForm({"added_by": username})
+        form = SongFormEdit({"added_by": request.user.get_username()})
         context = {'type': "new", 'form': form}
     return render(request, "music/contribute_song.html", context)
 

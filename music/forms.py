@@ -27,7 +27,6 @@ class SongForm(ModelForm):
         # same list.
         if _data_list == None:
             _data_list = []
-        self.fields['soloist_text'].widget = ListTextWidget(data_list=_data_list, name='data_list')
         self.fields['artist_text'].widget = ListTextWidget(data_list=_data_list, name='data_list')
         self.fields['composer_text'].widget = ListTextWidget(data_list=_data_list, name='data_list')
         self.fields['conductor_text'].widget = ListTextWidget(data_list=_data_list, name='data_list')
